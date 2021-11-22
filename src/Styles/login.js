@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { NavigationEvents } from "react-navigation";
+import { NavigationEvents, withOrientation } from "react-navigation";
 import { windowHeight } from "./dimension";
 import { windowWidth } from "./dimension";
 
@@ -27,6 +27,15 @@ export const loginStyle = StyleSheet.create ({
         justifyContent: 'center',
         alignItems: 'center'
     },
+
+    textInputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+
+    },
+    // loginIcon:{
+    //     color: 'white',
+    // }, 
     // textInputContainer: {
     //     flexDirection: 'row',
     //     alignItems: 'center',

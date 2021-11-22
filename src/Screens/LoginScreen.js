@@ -7,7 +7,11 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import { EyeOutlined, EyeInvisibleOutlined, UserOutlined } from '@ant-design/icons'
+import {
+  EyeOutlined,
+  EyeInvisibleOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { loginStyle } from "../Styles/login";
 
@@ -36,30 +40,37 @@ export default function Login({ navigation }) {
       </View>
 
       <View style={loginStyle.loginContainerFooter}>
-        <TextInput
-          style={loginStyle.textInput}
-          onChangeText={(loginText) => setLoginText(loginText)}
-          value={loginText}
-          placeholder="Identifiant"
-          // left={<TextInput.Icon name="account" />}
-          textAlign={"center"}
-          placeholderTextColor="white"
-          
-        //   {<UserOutlined />}
-        />
-        <UserOutlined />
+        <View style={loginStyle.textInputContainer}>
+          <TextInput
+            style={loginStyle.textInput}
+            onChangeText={(loginText) => setLoginText(loginText)}
+            value={loginText}
+            placeholder="Identifiant"
+            // left={<TextInput.Icon name="account" />}
+            textAlign={"center"}
+            placeholderTextColor="white"
 
-        <TextInput
-          style={loginStyle.textInput}
-          onChangeText={(loginPass) => setLoginPass(loginPass)}
-          value={loginPass}
-          placeholderTextColor="white"
-          placeholder="Mot de passe"
-          textAlign={"center"}
-          secureTextEntry={isSecureEntry}
-        />
-        <EyeOutlined />
-        <EyeInvisibleOutlined />
+            //   {<UserOutlined />}
+          />
+          <UserOutlined style={{ fontSize: '16px', color: '#08c', marginLeft: '-25px' }} />
+        </View>
+
+        <View style={loginStyle.textInputContainer}>
+          <TextInput
+            style={loginStyle.textInput}
+            onChangeText={(loginPass) => setLoginPass(loginPass)}
+            value={loginPass}
+            placeholderTextColor="white"
+            placeholder="Mot de passe"
+            textAlign={"center"}
+            secureTextEntry={isSecureEntry}
+          />
+          <TouchableOpacity>
+            <EyeOutlined style={{ fontSize: '16px', color: '#08c', marginLeft: '-25px' }} />
+            {/* <EyeInvisibleOutlined style={{ fontSize: '16px', color: '#08c', marginLeft: '-25px' }} /> */}
+          </TouchableOpacity>
+
+        </View>
 
         <TouchableOpacity onPress={handleLogin} style={loginStyle.loginButton}>
           <Text>Se Connecter</Text>
