@@ -11,7 +11,8 @@ import * as MediaLibrary from 'expo-media-library';
 
 const Projects = () => {    
     const [textDescription, setTextDescription] = useState("");
-    const [selectedDocs, setSelectedDocs] = useState({});
+    // const [selectedDocs, setSelectedDocs] = useState({});
+    const [selectedDocs, setSelectedDocs] = useState();
 
 
 
@@ -26,19 +27,16 @@ const Projects = () => {
         );
     }
 
-    useEffect(() => {
-
-        (async () => {
-            if(Platform.OS !== 'web') {
-                const { status } = await MediaLibrary.requestPermissionsAsync();
-                if ( status !== 'granted' ){
-                    alert("Désolé, la permission est nécessaire pour accéder à la galerie");
-                }
-            }
-
-            
-        })();
-    }, []);
+    // useEffect(() => {
+    //     (async () => {
+    //         if(Platform.OS !== 'web') {
+    //             const { status } = await MediaLibrary.requestPermissionsAsync();
+    //             if ( status !== 'granted' ){
+    //                 alert("Désolé, la permission est nécessaire pour accéder à la galerie");
+    //             }
+    //         }  
+    //     })();
+    // }, []);
 
 
    const handlePickDocs = async() => {
@@ -54,32 +52,43 @@ const Projects = () => {
     console.log(pickerResult.uri);
     console.log(pickerResult);
     console.log(pickerResult.name);
-
-    setSelectedDocs({ localUri: pickerResult.uri});
+    // setSelectedDocs({ name: pickerResult.name})
+    setSelectedDocs({ localUri: pickerResult.uri });
     // console.log(selectedDocs.uri);
 
-    // setSelectedDocs({ name: pickerResult.name})
-    // console.log(selectedDocs)
+    console.log(selectedDocs)
+
    }
 
+//    const DisplayPickedDocs = () => {
+//     if ( selectedDocs !== null ){
+//         return (
+//             <View style={styles.container}>
+//                 <Image
+//                     source={{ uri: selectedDocs.localUri}}
+//                     style={styles.thumbnail}
+//                 />
+    
+//             </View>
+//         );
+//        }
+//     }
 
-   if ( selectedDocs !== null ){
-    return (
-        <View style={styles.container}>
-            <Image
-                source={{ uri: selectedDocs.localUri}}
-                style={styles.thumbnail}
-            />
-
-            {/* <View style={styles.buttonContainer}>
-                <Button title='Return' onPress={pressHandler} />
-                <Button title='Valider' onPress={handleDocSubmit} />
-            </View> */}
-        </View>
-    );
-   }
-
-
+// CONTINUER DE CHERCHER COMMENT MAPPER SUR UN OBJET !
+    const DisplayPickedDocs = () => {
+        if ( selectedDocs !== null ){
+            return (
+                <View style={styles.container}>
+                {selectedDocs && selectedDocs.map((el, localUri) => (
+                    <Image key={el.name}
+                        source={{ uri: selectedDocs.localUri}}
+                        style={styles.thumbnail}
+                    />))}
+        
+                </View>
+            );
+       }
+    }
 
 
 
@@ -104,12 +113,8 @@ const Projects = () => {
                 style={homeStyle.chooseButton}
             />
 
-            {/* <View>
-            { selectedDocs !== null ? <DisplayDocs /> : <View><Text>Vous n'avez pas choisi de documents.</Text></View> }
-            </View> */}
-            {/* <DisplayDocs selectedDocs={selectedDocs} /> */}
 
-
+            <DisplayPickedDocs/>
             </View>
         </SafeAreaView>
     )
