@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import LoginScreen from "../Screens/LoginScreen"
-// import HomeScreen from "../Screens/HomeScreen";
+import HomeScreen from "../Screens/HomeScreen";
 // import DisclaimerScreen from "../Screens/DisclaimerScreen";
 // import ThankyouScreen from "../Screens/ThankyouScreen";
 
@@ -22,10 +22,10 @@ const AppStack = () => {
             options={{headerShown: false}}
             />
 
-            {/* <Stack.Screen
+            <Stack.Screen
             name="HomeScreen"
             component={HomeScreen}
-            /> */}
+            />
 
             {/* <Stack.Screen
             name="ThankyouScreen"

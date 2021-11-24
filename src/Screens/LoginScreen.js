@@ -15,6 +15,8 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { loginStyle } from "../Styles/login";
 
+
+
 export default function Login({ navigation }) {
   const [loginText, setLoginText] = useState("");
   const [loginPass, setLoginPass] = useState("");
@@ -28,6 +30,20 @@ export default function Login({ navigation }) {
     //     return <Text>Veuillez vous connecter svp</Text>
     // }
   };
+
+  const Checkbox = ({ onValueChange, selected }) => (
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={onValueChange}
+      style={loginStyle.checkbox}>
+      {selected && <Text style={loginStyle.checkmark}>✓</Text>}
+    </TouchableOpacity>
+  );
+
+  const [isSelected, setSelected] = useState(false);
+  
+  const toggleCheckbox = () => setSelected(!isSelected);
+
 
   return (
     <SafeAreaView style={loginStyle.mainContainer}>
@@ -46,11 +62,8 @@ export default function Login({ navigation }) {
             onChangeText={(loginText) => setLoginText(loginText)}
             value={loginText}
             placeholder="Identifiant"
-            // left={<TextInput.Icon name="account" />}
-            textAlign={"center"}
             placeholderTextColor="white"
-
-            //   {<UserOutlined />}
+            // textAlign={"center"}
           />
           <UserOutlined style={{ fontSize: '16px', color: '#08c', marginLeft: '-25px' }} />
         </View>
@@ -60,21 +73,34 @@ export default function Login({ navigation }) {
             style={loginStyle.textInput}
             onChangeText={(loginPass) => setLoginPass(loginPass)}
             value={loginPass}
-            placeholderTextColor="white"
             placeholder="Mot de passe"
-            textAlign={"center"}
+            placeholderTextColor="white"
+            // textAlign={"center"}
             secureTextEntry={isSecureEntry}
           />
-          <TouchableOpacity>
-            <EyeOutlined style={{ fontSize: '16px', color: '#08c', marginLeft: '-25px' }} />
-            {/* <EyeInvisibleOutlined style={{ fontSize: '16px', color: '#08c', marginLeft: '-25px' }} /> */}
+          <TouchableOpacity 
+            onPress={() => {
+              setIsSecureEntry((prev) => !prev)
+            }}
+          >
+            {isSecureEntry ? <EyeOutlined style={{ fontSize: '16px', color: '#08c', marginLeft: '-25px' }} /> :             <EyeInvisibleOutlined style={{ fontSize: '16px', color: '#08c', marginLeft: '-25px' }} />
+            }
           </TouchableOpacity>
-
         </View>
 
-        <TouchableOpacity onPress={handleLogin} style={loginStyle.loginButton}>
-          <Text>Se Connecter</Text>
+      <View style={loginStyle.checkboxContainer}>
+        <Checkbox onValueChange={toggleCheckbox} selected={isSelected} />
+        <TouchableOpacity activeOpacity={0.8} onPress={toggleCheckbox}>
+          <Text style={loginStyle.label}>{"J'accepte les conditions générales"}</Text>
         </TouchableOpacity>
+      </View>
+
+        <TouchableOpacity 
+          onPress={handleLogin} 
+          style={loginStyle.loginButton}>
+            <Text style={loginStyle.loginButtonText}>Se Connecter</Text>
+        </TouchableOpacity>
+
       </View>
     </SafeAreaView>
   );

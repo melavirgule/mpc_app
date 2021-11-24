@@ -78,7 +78,37 @@ export const loginStyle = StyleSheet.create ({
         // backgroundColor: 'purple',
         // backgroundColor: 'rgb(64, 48, 142, 0.5)',
         borderRadius: 10,
-
-
     },
+    loginButtonText: {
+        color: 'white',
+    },
+    checkboxContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        // backgroundColor: '#ecf0f1',
+        padding: 8,
+    
+    },
+    checkbox: {
+        width: 24,
+        height: 24,
+        borderWidth: 1,
+        borderColor: '#4D36B7',
+      },
+    checkmark: {
+        textAlign: 'center',
+        alignSelf: 'center',
+        fontSize: 18,
+        color: '#4D36B7'
+    },
+    label: {
+        margin: 12,
+        fontSize: 12,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: '#4D36B7'
+    },
+    
 })
