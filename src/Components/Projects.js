@@ -12,7 +12,7 @@ import * as MediaLibrary from 'expo-media-library';
 const Projects = () => {    
     const [textDescription, setTextDescription] = useState("");
     // const [selectedDocs, setSelectedDocs] = useState({});
-    const [selectedDocs, setSelectedDocs] = useState();
+    const [selectedDocs, setSelectedDocs] = useState({});
 
 
 
@@ -49,11 +49,12 @@ const Projects = () => {
     if(pickerResult.type === 'cancel'){
         return;
     }
-    console.log(pickerResult.uri);
+    // console.log(pickerResult.uri);
     console.log(pickerResult);
-    console.log(pickerResult.name);
+    // console.log(pickerResult.name);
     // setSelectedDocs({ name: pickerResult.name})
-    setSelectedDocs({ localUri: pickerResult.uri });
+    // setSelectedDocs({ localUri: pickerResult.uri });
+    setSelectedDocs({ pickerResult });
     // console.log(selectedDocs.uri);
 
     console.log(selectedDocs)
@@ -75,21 +76,35 @@ const Projects = () => {
 //     }
 
 // CONTINUER DE CHERCHER COMMENT MAPPER SUR UN OBJET !
+    // const DisplayPickedDocs = () => {
+    //     if ( selectedDocs !== null ){
+    //         return (
+    //             <View style={styles.container}>
+    //             {selectedDocs && selectedDocs.map((el, localUri) => (
+    //                 <Image key={el.name}
+    //                     source={{ uri: selectedDocs.localUri}}
+    //                     style={styles.thumbnail}
+    //                 />))}
+        
+    //             </View>
+    //         );
+    //    }
+    // }
+
     const DisplayPickedDocs = () => {
         if ( selectedDocs !== null ){
             return (
                 <View style={styles.container}>
-                {selectedDocs && selectedDocs.map((el, localUri) => (
-                    <Image key={el.name}
+                    <Image
                         source={{ uri: selectedDocs.localUri}}
                         style={styles.thumbnail}
-                    />))}
+                    />
         
                 </View>
             );
-       }
-    }
-
+           }
+        }
+    
 
 
 
