@@ -71,7 +71,7 @@ export const loginStyle = StyleSheet.create ({
         width: 150,
         height: 50,
         maxHeight: 60,
-        marginTop: 150,
+        margin: 100,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#4D36B7',

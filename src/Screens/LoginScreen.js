@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import {
   Image,
-  View,
-  TextInput,
-  Button,
+  Platform,
   TouchableOpacity,
   Text,
+  View,
+  TextInput,
 } from "react-native";
-import {
-  EyeOutlined,
-  EyeInvisibleOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+// import {
+//   EyeOutlined,
+//   EyeInvisibleOutlined,
+//   UserOutlined,
+// } from "@ant-design/icons";
+
 import { SafeAreaView } from "react-native-safe-area-context";
 import { loginStyle } from "../Styles/login";
 
